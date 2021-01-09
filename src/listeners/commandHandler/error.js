@@ -19,7 +19,7 @@ class ErrorListener extends Listener {
 
     if (message.guild ? message.channel.permissionsFor(this.client.user).has('SEND_MESSAGES') : true) {
       message.channel.send([
-        'An error occured, please submit an issue on https://github.com/Jotunn-Development/heimdallr/issues.',
+        'An error occured, please submit an issue on https://github.com/VulgarBear/maple-isle-bot/issues.',
         '```js',
         err.toString(),
         '```',

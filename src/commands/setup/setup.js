@@ -48,15 +48,6 @@ class SetupCommand extends Command {
             start: 'What channel would you like to use as the starboard?',
             retry: 'Please provide a valid text channel.'
           }
-        },
-        {
-          id: 'yesOrNo',
-          type: /^(true|false)$/i,
-          deafult: false,
-          prompt: {
-            start: 'Would you like to enable nsfw mode true/false?',
-            retry: 'Please either input either true or false.'
-          }
         }
       ]
     })
@@ -69,11 +60,7 @@ class SetupCommand extends Command {
     await this.client.settings.set(msg.guild, 'logChannel', logChannel.id)
     await this.client.settings.set(msg.guild.id, 'newsChannel', anncChannel.id)
     await this.client.settings.set(msg.guild, 'starboardChannelID', starChannel.id)
-    if (yesOrNo.match[0] === 'true') {
-      await this.client.settings.set(msg.guild, 'nsfw', true)
-    } else {
-      await this.client.settings.set(msg.guild, 'nsfw', false)
-    }
+
     // Build embed with results and send
     const embed = this.client.util.embed()
       .setAuthor('Server Setting Wizard')
@@ -83,8 +70,7 @@ class SetupCommand extends Command {
         `**Mute Role**: ${muteRoleName}`,
         `**Log Channel**: ${logChannel}`,
         `**Annoucement Channel**: ${anncChannel}`,
-        `**Starboard**: ${starChannel}`,
-        `**NSFW Mode** \`${yesOrNo.match[0]}\``
+        `**Starboard**: ${starChannel}`
       ])
       .setTimestamp()
       .setFooter(`Completed by ${msg.author.tag}`, `${msg.author.displayAvatarURL()}`)

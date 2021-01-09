@@ -37,7 +37,7 @@ class StatsCommand extends Command {
   async exec (msg) {
     const embed = this.client.util.embed()
       .setColor(process.env.EMBED)
-      .setTitle('Heimdallr Statistics')
+      .setTitle('Maple Island Bot Statistics')
       .addField('Discord', [
         `**Guilds**: ${this.client.guilds.cache.size}`,
         `**Channels**: ${this.client.channels.cache.size}`,

@@ -19,12 +19,12 @@ class AboutCommand extends Command {
     // Build embed
     const embed = this.client.util.embed()
       .setColor(process.env.EMBED)
-      .setTitle('About Heimdallr')
+      .setTitle('About Maple Island Bot')
       .setDescription([
-        `Heimdallr is developed by ${vulgar.tag} and the devs at **${asgard}** and is a fork of Hoshi by **1computer1** and **vzwgrey** with added functionality.`,
+        `Maple Island Bot is developed by ${vulgar.tag} and the devs at **Jotunn Development** and is a fork of [Heimdallr](https://top.gg/user/101808227385098240) with custom functionality.`,
         '',
-        'Heimdallr uses the **[Discord.js](https://discord.js.org)** library and the **[Akairo](https://1computer1.github.io/discord-akairo)** framework.',
-        'You can find out more on the **[github](https://github.com/VulgarBear/heimdall)**.',
+        'Maple Island Bot uses the **[Discord.js](https://discord.js.org)** library and the **[Akairo](https://1computer1.github.io/discord-akairo)** framework.',
+        'You can find out more on the **[github](https://github.com/Jotunn-Development/heimdallr)**.',
         '',
         `Use \`${prefix}stats\` for statistics and \`${prefix}invite\` for an invite link.`,
         '',

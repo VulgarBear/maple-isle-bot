@@ -22,7 +22,6 @@ class SettingsCommand extends Command {
     const starboard = this.client.starboards.get(msg.guild.id)
     const logChan = this.client.settings.get(msg.guild.id, 'logChannel', [])
     const newsChan = this.client.settings.get(msg.guild.id, 'newsChannel', [])
-    const blacklist = this.client.settings.get(msg.guild, 'blacklist', [])
     const nsfw = this.client.settings.get(msg.guild, 'nsfw', [])
     const logName = msg.guild.channels.resolve(logChan)
     const newsName = msg.guild.channels.resolve(newsChan)
@@ -41,9 +40,7 @@ class SettingsCommand extends Command {
         `**Annoucement Channel**: ${(newsName) || 'None'}`,
         `**Emoji**: ${Starboard.emojiFromID(this.client, emojiID)}`,
         `**Starboard**: ${(starboard && starboard.channel) || 'None'}`,
-        `**Threshold**: ${(starboard && starboard.threshold) || 'None'}`,
-        `**Blacklist**: ${blacklist.join(', ') || 'None'}`,
-        `**NSFW Mode**: \`${nsfw}\``
+        `**Threshold**: ${(starboard && starboard.threshold) || 'None'}`
       ])
       .setTimestamp()
       .setFooter(`Requested by ${msg.author.tag}`, `${msg.author.displayAvatarURL()}`)

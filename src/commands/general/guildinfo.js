@@ -19,6 +19,7 @@ class GuildInfoCommand extends Command {
   }
 
   async exec (msg) {
+    msg.delete()
     // Build Embed
     const embed = this.client.util.embed()
       .setColor(process.env.EMBED)

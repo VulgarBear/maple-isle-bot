@@ -44,6 +44,11 @@ class StarCommand extends Command {
   }
 
   async exec (message, { message: msg }) {
+    const blacklist = this.client.settings.get(message.guild, 'blacklist', [])
+    if (blacklist.includes(message.author.id)) {
+      return message.util.reply('You can\'t use this command because you have been blacklisted.')
+    }
+
     const starboard = this.client.starboards.get(message.guild.id)
     const error = await starboard.add(msg, message.author)
     if (error !== undefined) {

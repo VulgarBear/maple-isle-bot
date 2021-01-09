@@ -1,6 +1,6 @@
 const { Command } = require('discord-akairo')
 const signale = require('signale')
-const Auths = require('../../models/hiddenPerms.js')
+// const Auths = require('../../models/hiddenPerms.js')
 
 class UserAuth extends Command {
   constructor () {

@@ -1,10 +1,7 @@
 const { Listener } = require('discord-akairo')
 const signale = require('signale')
 const Starboard = require('../../struct/Starboard')
-// const BOATS = require('boats.js')
-// const Boats = new BOATS(process.env.BOAT_API)
-// const DBL = require('dblapi.js')
-// const dbl = new DBL(process.env.TOP_API, this.client)
+const roleClaim = require('../../helpers/role-claim.js')
 
 class ReadyListener extends Listener {
   constructor () {
@@ -22,13 +19,7 @@ class ReadyListener extends Listener {
     signale.start({ prefix: '[Client]', message: `${client.user.tag} is ready to server!` })
 
     /* Post Intial Client Activity */
-    client.user.setActivity(`Over ${this.client.guilds.cache.size} Realms`, { type: 'WATCHING' })
-
-    /* Bot Listings STATS */
-    const topStats = require('../../helpers/listTop')
-    topStats.init(client)
-    const boatStats = require('../../helpers/listBoats')
-    boatStats.init(client)
+    client.user.setActivity(`Over ${this.client.guilds.cache.size} Villagers`, { type: 'WATCHING' })
 
     /* Intialize Starboard */
     for (const guild of this.client.guilds.cache.values()) {
@@ -36,9 +27,12 @@ class ReadyListener extends Listener {
       client.starboards.set(guild.id, starboard)
     }
 
+    /* Load Reaction Role Claim */
+    roleClaim(client)
+
     /* Post client Activity every 20 seconds */
     setInterval(() => {
-      client.user.setActivity(`Over ${this.client.guilds.cache.size} Realms`, { type: 'WATCHING' })
+      client.user.setActivity(`Over ${this.client.guilds.cache.size} Villagers`, { type: 'WATCHING' })
     }, 20000)
   }
 }
